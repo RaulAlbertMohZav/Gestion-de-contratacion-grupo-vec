@@ -5,11 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class Educacion extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        "categoria"
+        "escolaridad",
+        "titulo",
+        "nombre_institucion",
+        "año_finalizacion",
+        "pais_id",
+        "candidate_information_id",
     ];
 }

@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categorias', function (Blueprint $table) {
+        Schema::create('base_idiomas', function (Blueprint $table) {
             $table->id();
-            $table->string('categoria'); // Expectativa Laboral
+            $table->string("nombre_idioma");
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categorias');
+        Schema::dropIfExists('base_idiomas');
     }
 };

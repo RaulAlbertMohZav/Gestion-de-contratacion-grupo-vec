@@ -22,6 +22,10 @@ class DatabaseSeeder extends Seeder
         Salario::factory()->count(25)->create();
         $this->call( SalarioSeeder::class );
         $this->call( CategoriasSeeder::class );
+        $this->call(ExperienciaLaboralSeeder::class );
+        $this->call(CandidatoSeeder::class );
+        $this->call(BaseIdiomasSeeder::class );
         Vacante::factory()->count(70)->create();
+        $this->call(PaisSeeder::class );
     }
 }
