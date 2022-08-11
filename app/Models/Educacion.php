@@ -17,4 +17,12 @@ class Educacion extends Model
         "pais_id",
         "candidate_information_id",
     ];
+
+    public function pais () {
+        return $this->belongsTo(Pais::class);
+    }
+
+    public function candidate_information () {
+        return $this->belongsTo(CandidateInformation::class);
+    }
 }

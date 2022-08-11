@@ -14,4 +14,12 @@ class CandidateLanguaje extends Model
         "nivel",
         "candidate_information_id",
     ];
+
+    public function base_idioma () {
+        return $this->belongsTo(BaseIdiomas::class);
+    }
+
+    public function candidate_information () {
+        return $this->belongsTo(CandidateInformation::class);
+    }
 }
