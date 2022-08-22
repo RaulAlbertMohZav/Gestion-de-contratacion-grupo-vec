@@ -13,7 +13,7 @@
             </div>
 
             @error('cv')
-                <livewire:mostrar-alerta :message="$message">
+                <livewire:mostrar-alerta :message="$message" />
             @enderror
 
             <x-button class="my-5">

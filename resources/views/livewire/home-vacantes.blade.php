@@ -22,23 +22,29 @@
                             </p>
                         </div>
 
-                        @auth
+                        {{--@auth
                             <div class="mt-5 md:mt-0">
                                 <a
                                     class="bg-indigo-500 p-3 text-sm uppercase font-bold text-white rounded-lg block text-center"
                                     href="{{ route('vacantes.show', $vacante->id) }}"
                                 >Ver Vacante</a>
                             </div>
-                        @endauth
+                        @endauth--}}
 
-                        @guest
+                        <div class="mt-5 md:mt-0">
+                            <a
+                                class="bg-indigo-500 p-3 text-sm uppercase font-bold text-white rounded-lg block text-center"
+                                href="{{ route('vacantes.show', $vacante->id) }}"
+                            >Ver Vacante</a>
+                        </div>
+                        {{--@guest
                             <div class="mt-5 md:mt-0">
                                 <a
                                     class="bg-indigo-500 p-3 text-sm uppercase font-bold text-white rounded-lg block text-center"
                                     disabled="disabled"
                                 >Inicia sesion para postular</a>
                             </div>
-                        @endguest
+                        @endguest--}}
 
                     </div>
                 @empty
