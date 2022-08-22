@@ -26,7 +26,7 @@ class ExpectativaLaboralForm extends Component
     public function mount() {
 
         if (CandidateProfileProcess::hasCandidateProfile()) {
-            $this->categorySelected = CandidateProfileProcess::getCandidateProfile()->id;
+            $this->categorySelected = CandidateProfileProcess::getCandidateProfile()->categoria_id;
         }
         $this->getCategories();
     }

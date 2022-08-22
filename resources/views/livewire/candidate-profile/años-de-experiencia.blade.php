@@ -1,19 +1,17 @@
 <div>
-
-    <x-label for="categories-for-candidates" :value="__('Expectativa Laboral')" />
+    <x-label for="years-of-experience" :value="__('Años de experiencia')" />
     <select
-        id="categories-for-candidates"
-        wire:model="categorySelected"
+        id="years-of-experience"
+        wire:model="yearOfExperienceSelected"
         class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full"
     >
         <option>-- Seleccione --</option>
-        @foreach ($categories as $category)
-            <option value="{{ $category->id }}">{{$category->cargo_desempenado}} - {{ $category->categoria->categoria }}</option>
+        @foreach ($yearsOfExperience as $yearOfExperience)
+            <option value="{{ $yearOfExperience }}">{{$yearOfExperience}}</option>
         @endforeach
     </select>
-    <p class="text-sm text-red-100">El sistema usará esta información para hacer match con las vacantes</p>
 
-    @error('categorySelected')
+    @error('yearOfExperienceSelected')
         <livewire:mostrar-alerta :message="$message" />
     @enderror
 </div>
@@ -24,11 +22,11 @@
 
     <script>
         (function () {
-            Livewire.on('toJSEmit-CategoryForCandidateSaved', () => {
+            Livewire.on('toJSEmit-yearOfExperienceForCandidateSaved', () => {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Expectativa laboral guardada',
+                    title: 'La información de años de experiencia ha sido guardada',
                     showConfirmButton: false,
                     timer: 3000
                 })

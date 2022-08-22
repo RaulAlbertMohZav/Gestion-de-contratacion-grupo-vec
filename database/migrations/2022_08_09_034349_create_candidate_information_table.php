@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('candidate_informations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('categoria_id')->constrained()->cascadeOnUpdate(); // (MATCH)
+            $table->foreignId('categoria_id')->nullable()->constrained()->cascadeOnUpdate(); // (MATCH)
             $table->enum("tiempo_experiencia", [
                 "sin experiencia",
                 "menos de un año",
