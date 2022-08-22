@@ -25,7 +25,7 @@ return new class extends Migration
                 "de cinco a diez años",
                 "de diez a quince años",
                 "más de quince años"
-            ]); // años de experiencia (Un numero) (MATCH)
+            ])->nullable(); // años de experiencia (Un numero) (MATCH)
             //$table->foreignId('experiencia_laboral_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             // Aqupi también apunta a varios idiomas
             $table->timestamps();
