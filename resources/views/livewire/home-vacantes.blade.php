@@ -17,17 +17,29 @@
                             <p class="text-xs font-bold text-gray-600 mb-1">{{$vacante->categoria->categoria}}</p>
                             <p class="text-base text-gray-600 mb-1">{{$vacante->salario->salario}}</p>
                             <p class="font-bold text-xs text-gray-600">
-                                Último día para postularse: 
+                                Último día para postularse:
                                 <span class="font-normal">{{$vacante->ultimo_dia->format('d/m/Y')}} </span>
                             </p>
                         </div>
 
-                        <div class="mt-5 md:mt-0">
-                            <a 
-                                class="bg-indigo-500 p-3 text-sm uppercase font-bold text-white rounded-lg block text-center" 
-                                href="{{ route('vacantes.show', $vacante->id) }}"
-                            >Ver Vacante</a>
-                        </div>
+                        @auth
+                            <div class="mt-5 md:mt-0">
+                                <a
+                                    class="bg-indigo-500 p-3 text-sm uppercase font-bold text-white rounded-lg block text-center"
+                                    href="{{ route('vacantes.show', $vacante->id) }}"
+                                >Ver Vacante</a>
+                            </div>
+                        @endauth
+
+                        @guest
+                            <div class="mt-5 md:mt-0">
+                                <a
+                                    class="bg-indigo-500 p-3 text-sm uppercase font-bold text-white rounded-lg block text-center"
+                                    disabled="disabled"
+                                >Inicia sesion para postular</a>
+                            </div>
+                        @endguest
+
                     </div>
                 @empty
                     <p class="p-3 text-center text-sm text-gray-600">No hay vacantes aún</p>
