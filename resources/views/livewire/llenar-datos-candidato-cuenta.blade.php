@@ -1,3 +1,3 @@
 <div>
-    Hola Mundo
+
 </div>
