@@ -16,6 +16,11 @@ class UsuariosSeeder extends Seeder
      */
     public function run()
     {
+        /*
+         * Rol 1 => Trabajador
+         * Rol 2 => Reclutador
+         * */
+
         User::query()->create([
             'name' => 'Raul Albert',
             'email' => 'ramz.162025@gmail.com',
@@ -33,6 +38,20 @@ class UsuariosSeeder extends Seeder
         User::query()->create([
             'name' => 'Erick CH',
             'email' => 'erick@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('grupo_vec'),
+            'rol' => 2,
+        ]);
+        User::query()->create([
+            'name' => 'Trabajador Example',
+            'email' => 'candidato@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('grupo_vec'),
+            'rol' => 1,
+        ]);
+        User::query()->create([
+            'name' => 'Reclutador Example',
+            'email' => 'reclutador@gmail.com',
             'email_verified_at' => now(),
             'password' => Hash::make('grupo_vec'),
             'rol' => 2,

@@ -14,10 +14,9 @@ class ExperienciaLaboral extends Model
         "compania",
         'pais_id',
         "actividad_id",
-        "compania",
-        "cargo_desempenado",
-        "rango_inicial_salario",
-        "rango_final_salario",
+        "categoria_id",
+        "cargo_desempenado_id",
+        "salario_id",
         "fecha_inicio_trabajo",
         "fecha_final_trabajo",
         "beneficios",
@@ -41,4 +40,17 @@ class ExperienciaLaboral extends Model
     public function candidate_information () {
         return $this->belongsTo(CandidateInformation::class);
     }
+
+    public function categoria () {
+        return $this->belongsTo(Categoria::class);
+    }
+
+    public function cargo_desempeñado () {
+        return $this->belongsTo(CargoDesempenado::class);
+    }
+
+    public function rango_salarial () {
+        return $this->belongsTo(Salario::class);
+    }
+
 }

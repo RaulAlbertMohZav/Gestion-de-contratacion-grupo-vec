@@ -32,6 +32,7 @@ Artisan::command('vec:clear', function () {
 
 
 Artisan::command('vec:migrate', function () {
+    $this->call('vec:clear');
     $this->call('migrate:fresh');
     $this->call('db:seed');
     $this->call('vec:clear');

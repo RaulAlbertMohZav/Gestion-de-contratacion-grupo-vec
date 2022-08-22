@@ -19,12 +19,12 @@ return new class extends Migration
             $table->foreignId('pais_id')->constrained()->cascadeOnUpdate();
             $table->foreignId("actividad_id")->constrained()->cascadeOnUpdate();
             $table->string("compania");
-            $table->string("cargo_desempenado");
-            $table->string("rango_inicial_salario");
-            $table->string("rango_final_salario");
+            $table->foreignId("categoria_id")->constrained()->cascadeOnUpdate();
+            $table->foreignId("cargo_desempenado_id")->constrained()->cascadeOnUpdate();
+            $table->foreignId("salario_id")->constrained()->cascadeOnUpdate();
             $table->timestamp("fecha_inicio_trabajo")->nullable();
             $table->timestamp("fecha_final_trabajo")->nullable();
-            $table->string("beneficios");
+            $table->text("beneficios");
             $table->text("descripcion");
 
             // Aquí se guarda a que candidato pertenece esta experiencia

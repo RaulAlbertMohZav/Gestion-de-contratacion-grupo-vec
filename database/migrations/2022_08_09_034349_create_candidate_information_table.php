@@ -17,7 +17,15 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->foreignId('categoria_id')->constrained()->cascadeOnUpdate(); // (MATCH)
-            $table->string("tiempo_experiencia"); // años de experiencia (Un numero) (MATCH)
+            $table->enum("tiempo_experiencia", [
+                "sin experiencia",
+                "menos de un año",
+                "de uno a tres años",
+                "de tres a cinco años",
+                "de cinco a diez años",
+                "de diez a quince años",
+                "más de quince años"
+            ]); // años de experiencia (Un numero) (MATCH)
             //$table->foreignId('experiencia_laboral_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             // Aqupi también apunta a varios idiomas
             $table->timestamps();

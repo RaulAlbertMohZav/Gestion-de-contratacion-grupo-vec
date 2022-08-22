@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class CargoDesempenado extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        "categoria"
+        "categoria_id",
+        "cargo_desempenado",
     ];
 
-    public function cargos_desempeñados () {
-        return $this->hasMany(CargoDesempenado::class);
+    public function categoria () {
+        return $this->belongsTo(Categoria::class);
     }
-
 }

@@ -17,15 +17,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->count(40)->create();
-        $this->call(UsuariosSeeder::class);
-        Salario::factory()->count(25)->create();
-        $this->call( SalarioSeeder::class );
+        $this->call(ActividadSeeder::class);
         $this->call( CategoriasSeeder::class );
-        $this->call(ExperienciaLaboralSeeder::class );
-        $this->call(CandidatoSeeder::class );
         $this->call(BaseIdiomasSeeder::class );
-        Vacante::factory()->count(70)->create();
+        $this->call( CargoDesempenadoSeeder::class );
+        $this->call( SalarioSeeder::class );
+        $this->call(UsuariosSeeder::class);
         $this->call(PaisSeeder::class );
+        $this->call(CandidatoInformationSeeder::class);
+        $this->call(ExperienciaLaboralSeeder::class);
+        //Salario::factory()->count(25)->create();
+        $this->call(CandidatoSeeder::class );
+
+        Vacante::factory()->count(70)->create();
+
     }
 }
