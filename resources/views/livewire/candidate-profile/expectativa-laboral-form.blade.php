@@ -1,5 +1,4 @@
-<div>
-
+<div class="w-full" >
     <x-label for="categories-for-candidates" :value="__('Expectativa Laboral')" />
     <select
         id="categories-for-candidates"
@@ -11,7 +10,7 @@
             <option value="{{ $category->id }}">{{$category->cargo_desempenado}} - {{ $category->categoria->categoria }}</option>
         @endforeach
     </select>
-    <p class="text-sm text-red-100">El sistema usará esta información para hacer match con las vacantes</p>
+    <p class="text-sm text-blue-900">El sistema usará esta información para hacer match con las vacantes</p>
 
     @error('categorySelected')
         <livewire:mostrar-alerta :message="$message" />

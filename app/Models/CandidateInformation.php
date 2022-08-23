@@ -25,7 +25,7 @@ class CandidateInformation extends Model
         return $this->belongsTo(Categoria::class);
     }
 
-    public function experiencia_laboral () {
+    public function experiencias_laborales () {
         return $this->hasMany(ExperienciaLaboral::class);
     }
 

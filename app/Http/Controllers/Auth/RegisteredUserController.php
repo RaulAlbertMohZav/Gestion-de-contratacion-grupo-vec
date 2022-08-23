@@ -47,6 +47,12 @@ class RegisteredUserController extends Controller
             'rol' => $request->rol
         ]);
 
+        if (((int) $request->rol) === 1) {
+            $user->candidate_information()->create([
+                'user_id' => $user->id
+            ]);
+        }
+
         event(new Registered($user));
 
         Auth::login($user);
