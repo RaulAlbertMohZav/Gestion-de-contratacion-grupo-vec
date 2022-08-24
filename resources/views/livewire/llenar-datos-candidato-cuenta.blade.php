@@ -16,6 +16,10 @@
                     <section class="md:flex md:justify-center px-2 py-4 w-full">
                         @livewire('candidate-profile.experiencias-laborales')
                     </section>
+                    <hr>
+                    <section class="md:flex md:justify-center px-2 py-4 w-full">
+                        @livewire('candidate-profile.educations')
+                    </section>
                 </div>
             </div>
         </div>

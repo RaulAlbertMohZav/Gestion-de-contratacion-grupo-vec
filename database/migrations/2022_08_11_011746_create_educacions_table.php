@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('escolaridad', ['secundaria', 'universidad', 'otro curso']);
             $table->string("titulo");
             $table->string("nombre_institucion");
-            $table->string("año_finalizacion");
+            $table->string("ano_finalizacion");
             $table->foreignId("pais_id")->constrained()->cascadeOnUpdate();
             $table->foreignId('candidate_information_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
             $table->timestamps();

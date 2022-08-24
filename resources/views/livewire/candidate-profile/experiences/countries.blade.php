@@ -14,6 +14,4 @@
     @error('countrySelected')
     <livewire:mostrar-alerta :message="$message" />
     @enderror
-
-
 </div>

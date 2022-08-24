@@ -113,10 +113,9 @@ class ExperienciaLaboralForm extends Component
 
         $this->experienciaLaboral->save();
 
-        $this->redirectRoute('llenar-datos-candidato');
-
         $this->emit('ToJS-ExperienceWorkSaved');
 
+        $this->redirectRoute('llenar-datos-candidato');
     }
 
     public function render()

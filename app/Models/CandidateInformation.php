@@ -33,7 +33,7 @@ class CandidateInformation extends Model
         return $this->hasMany(CandidateLanguaje::class);
     }
 
-    public function educacion () {
+    public function educaciones () {
         return $this->hasMany(Educacion::class);
     }
 }
