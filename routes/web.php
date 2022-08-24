@@ -26,7 +26,8 @@ Route::get('/vacantes/{vacante}', [VacanteController::class, 'show'])->name('vac
 Route::get('/candidatos/{vacante}', [CandidatosController::class, 'index'])->name('candidatos.index');
 
 Route::get('/llenar-datos/candidato', \App\Http\Livewire\LlenarDatosCandidatoCuenta::class)->middleware(['auth'])->name('llenar-datos-candidato');
-
+Route::get('edit/experience/{experienciaLaboral}', \App\Http\Livewire\CandidateProfile\ExperienciaLaboralForm::class)->name('edit.experience_work');
+Route::get('create/experience', \App\Http\Livewire\CandidateProfile\ExperienciaLaboralForm::class)->name('create.experience_work');
 // Notificaciones
 Route::get('/notificaciones', NotificacionController::class)->middleware(['auth', 'verified', 'rol.reclutador'])->name('notificaciones');
 

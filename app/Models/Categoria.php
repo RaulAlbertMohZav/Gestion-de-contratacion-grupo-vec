@@ -13,7 +13,7 @@ class Categoria extends Model
         "categoria"
     ];
 
-    public function cargos_desempeñados () {
+    public function cargos_desempenados () {
         return $this->hasMany(CargoDesempenado::class);
     }
 

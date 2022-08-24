@@ -1,4 +1,4 @@
-<div class="w-full" >
+<div class="w-full">
     <x-label for="categories-for-candidates" :value="__('Expectativa Laboral')" />
     <select
         id="categories-for-candidates"
