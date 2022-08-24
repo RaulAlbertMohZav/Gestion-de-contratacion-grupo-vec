@@ -147,7 +147,7 @@ class ExperienciaLaboralSeeder extends Seeder
         foreach ($candidatos as $candidato) {
             $factoryInstance = Factory::create();
             $categoria_query = Categoria::all()->random();
-            $cargo_desempenado_random = $categoria_query->cargos_desempeñados->random();
+            $cargo_desempenado_random = $categoria_query->cargos_desempenados->random();
 
             ExperienciaLaboral::query()->create([
                 "nombre_cargo" => $cargo_desempenado_random->cargo_desempenado,
@@ -157,8 +157,8 @@ class ExperienciaLaboralSeeder extends Seeder
                 "categoria_id" => $categoria_query->id,
                 "cargo_desempenado_id" => $cargo_desempenado_random->id,
                 "salario_id" => Salario::all()->random()->id,
-                "fecha_inicio_trabajo" => now()->addDays(random_int(1,5))->addMonths(random_int(1,2))->subYears(random_int(1,3)),
-                "fecha_final_trabajo" => now()->addDays(random_int(5,10))->addMonths(random_int(2,4)),
+                "fecha_inicio_trabajo" => now()->addDays(random_int(1,5))->addMonths(random_int(1,2))->subYears(random_int(1,3))->format('Y-m-d'),
+                "fecha_final_trabajo" => now()->addDays(random_int(5,10))->addMonths(random_int(2,4))->format('Y-m-d'),
                 "beneficios" => 'Bonos, Comisiones, Cuota de alimentación, Seguro de vida',
                 "descripcion" => "Lorem Ipsum es simplemente un texto ficticio de la industria de la impresión y la composición tipográfica Lorem Ipsum ha sido el texto ficticio estándar de la industria desde el año 1500, cuando un impresor desconocido tomó una galera de tipos y la codificó para hacer un libro de muestras tipográficas Ha sobrevivido no solo cinco siglos, sino también el salto a la composición tipográfica electrónica, permaneciendo esencialmente sin cambios Se popularizó en la década de 1960 con el lanzamiento de hojas de Letraset que contenían pasajes de Lorem Ipsum y, más recientemente, con software de autoedición como Aldus PageMaker, que incluía versiones de Lorem Ipsum",
                 "candidate_information_id" => $candidato->id

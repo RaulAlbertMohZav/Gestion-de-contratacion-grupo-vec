@@ -22,8 +22,8 @@ return new class extends Migration
             $table->foreignId("categoria_id")->constrained()->cascadeOnUpdate();
             $table->foreignId("cargo_desempenado_id")->constrained()->cascadeOnUpdate();
             $table->foreignId("salario_id")->constrained()->cascadeOnUpdate();
-            $table->timestamp("fecha_inicio_trabajo")->nullable();
-            $table->timestamp("fecha_final_trabajo")->nullable();
+            $table->string("fecha_inicio_trabajo")->nullable();
+            $table->string("fecha_final_trabajo")->nullable();
             $table->text("beneficios");
             $table->text("descripcion");
 

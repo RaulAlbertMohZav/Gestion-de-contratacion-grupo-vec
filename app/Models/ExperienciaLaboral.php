@@ -24,11 +24,6 @@ class ExperienciaLaboral extends Model
         "candidate_information_id"
     ];
 
-    protected $casts = [
-        "fecha_inicio_trabajo" => "date",
-        "fecha_final_trabajo" => "date",
-    ];
-
     public function pais () {
         return $this->belongsTo(Pais::class);
     }
