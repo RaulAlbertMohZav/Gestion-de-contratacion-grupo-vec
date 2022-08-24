@@ -56,7 +56,7 @@
         ])
         @livewire('candidate-profile.experiences.final-date-work', [
             'final_date_selected' => $experienciaLaboral->fecha_final_trabajo
-        ]))
+        ])
     </div>
 
     <section class="w-full my-4">
