@@ -79,7 +79,7 @@
 
     <div class="flex justify-end items-center py-20">
         <x-button type="submit">
-            Registrar Experiencia
+            Guardar Experiencia Laboral
         </x-button>
     </div>
 

@@ -17,6 +17,11 @@ class InitialDateWork extends Component
         $this->validateOnly($propertyName);
     }
 
+    public function updatedInitialDateSelected () {
+        $this->validate();
+        $this->emit('getInitialDateSelectedEmit', $this->initial_date_selected);
+    }
+
     public function render()
     {
         return view('livewire.candidate-profile.experiences.initial-date-work');

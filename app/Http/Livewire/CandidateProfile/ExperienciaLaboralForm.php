@@ -14,8 +14,30 @@ class ExperienciaLaboralForm extends Component
     protected $listeners = [
         "getCountrySelectedEmit",
         "getActivitySelectedEmit",
-        "getCategorySelectedEmit"
+        "getCategorySelectedEmit",
+        "getHeldPositionSelectedEmit",
+        "getSalarySelectedEmit",
+        "getInitialDateSelectedEmit",
+        "getFinalDateSelectedEmit"
     ];
+
+    public function getInitialDateSelectedEmit ($fecha_inicio_trabajo) {
+        $this->experienciaLaboral->fecha_inicio_trabajo = $fecha_inicio_trabajo;
+        $this->validateOnly('experienciaLaboral.fecha_inicio_trabajo');
+    }
+    public function getFinalDateSelectedEmit ($fecha_final_trabajo) {
+        $this->experienciaLaboral->fecha_final_trabajo = $fecha_final_trabajo;
+        $this->validateOnly('experienciaLaboral.fecha_final_trabajo');
+    }
+    public function getHeldPositionSelectedEmit ($cargo_desempenado_id) {
+        $this->experienciaLaboral->cargo_desempenado_id = $cargo_desempenado_id;
+        $this->validateOnly('experienciaLaboral.cargo_desempenado_id');
+    }
+
+    public function getSalarySelectedEmit ($salario_id) {
+        $this->experienciaLaboral->salario_id = $salario_id;
+        $this->validateOnly('experienciaLaboral.salario_id');
+    }
 
     public function getCountrySelectedEmit ($country_id) {
         $this->experienciaLaboral->pais_id = $country_id;
@@ -55,16 +77,16 @@ class ExperienciaLaboralForm extends Component
                 'required', 'exists:salarios,id'
             ],
             'experienciaLaboral.fecha_inicio_trabajo' => [
-                'required', 'exists:salarios,id'
+                'required'
             ],
             'experienciaLaboral.fecha_final_trabajo' => [
-                'required', 'exists:salarios,id'
+                'required'
             ],
             'experienciaLaboral.beneficios' => [
                 'required', 'max:255'
             ],
             'experienciaLaboral.descripcion' => [
-                'required', 'max:255'
+                'required', 'max:1000'
             ]
         ];
     }
@@ -80,7 +102,21 @@ class ExperienciaLaboralForm extends Component
     }
 
     public function saveExperienceWork () {
+
+        $isUpdated = $this->experienciaLaboral->id;
+
+        if ($isUpdated === null) {
+            $this->experienciaLaboral->candidate_information_id = auth()->user()->candidate_information->id;
+        }
+
         $this->validate();
+
+        $this->experienciaLaboral->save();
+
+        $this->redirectRoute('llenar-datos-candidato');
+
+        $this->emit('ToJS-ExperienceWorkSaved');
+
     }
 
     public function render()

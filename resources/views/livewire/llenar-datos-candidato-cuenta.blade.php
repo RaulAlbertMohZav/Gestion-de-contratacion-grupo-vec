@@ -21,3 +21,22 @@
         </div>
     </div>
 </div>
+
+@push('scripts')
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        (function () {
+            Livewire.on('ToJS-ExperienceWorkSaved', () => {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Experiencia laboral guardada',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+            })
+        }) ()
+    </script>
+@endpush

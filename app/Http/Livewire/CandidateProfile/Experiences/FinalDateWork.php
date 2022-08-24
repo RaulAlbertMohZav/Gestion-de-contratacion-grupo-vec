@@ -17,6 +17,11 @@ class FinalDateWork extends Component
         $this->validateOnly($propertyName);
     }
 
+    public function updatedFinalDateSelected () {
+        $this->validate();
+        $this->emit('getFinalDateSelectedEmit', $this->final_date_selected);
+    }
+
     public function render()
     {
         return view('livewire.candidate-profile.experiences.final-date-work');
