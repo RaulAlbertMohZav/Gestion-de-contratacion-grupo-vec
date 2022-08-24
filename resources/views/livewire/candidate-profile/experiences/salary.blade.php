@@ -5,7 +5,7 @@
         wire:model="salarySelected"
         class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full"
     >
-        <option>-- Seleccione --</option>
+        <option value="">-- Seleccione --</option>
         @foreach ($salaries as $salary)
             <option value="{{ $salary->id }}">{{$salary->salario }}</option>
         @endforeach
@@ -14,4 +14,5 @@
     @error('salarySelected')
     <livewire:mostrar-alerta :message="$message" />
     @enderror
+
 </div>

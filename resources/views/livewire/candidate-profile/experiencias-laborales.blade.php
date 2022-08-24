@@ -1,7 +1,7 @@
 <div class="w-full">
     <x-label for="experiences" :value="__('Experiencias Laborales')" />
     <hr>
-    <div class="grid grid-cols-3 gap-3">
+    <div class="grid grid-cols-3 gap-3 py-9">
         @foreach($experiencias_laborales as $experiencia_laboral)
             <div>
 

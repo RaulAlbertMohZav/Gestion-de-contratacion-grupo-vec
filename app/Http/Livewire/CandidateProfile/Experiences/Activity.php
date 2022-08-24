@@ -11,7 +11,16 @@ class Activity extends Component
     public $activitySelected;
     public $activities;
 
+    public $rules = [
+        "activitySelected" => ['required']
+    ];
+
+    public function updated ($propertyName) {
+        $this->validateOnly($propertyName);
+    }
+
     public function updatedActivitySelected () {
+        $this->validate();
         $this->emit('getActivitySelectedEmit', $this->activitySelected);
     }
 

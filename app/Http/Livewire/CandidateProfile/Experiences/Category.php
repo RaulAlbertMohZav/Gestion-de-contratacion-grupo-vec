@@ -11,7 +11,16 @@ class Category extends Component
     public $categorySelected;
     public $categories;
 
+    public $rules = [
+        "categorySelected" => ['required']
+    ];
+
+    public function updated ($propertyName) {
+        $this->validateOnly($propertyName);
+    }
+
     public function updatedCategorySelected () {
+        $this->validate();
         $this->emit('getCategorySelectedEmit', $this->categorySelected);
     }
 

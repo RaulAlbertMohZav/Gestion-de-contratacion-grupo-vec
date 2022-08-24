@@ -17,19 +17,38 @@
     @livewire('candidate-profile.experiences.countries', [
         'countrySelected' => $experienciaLaboral->pais_id
     ])
+    @error('experienciaLaboral.pais_id')
+    <livewire:mostrar-alerta :message="$message" />
+    @enderror
+
     @livewire('candidate-profile.experiences.activity', [
         'activitySelected' => $experienciaLaboral->actividad_id
     ])
+    @error('experienciaLaboral.actividad_id')
+    <livewire:mostrar-alerta :message="$message" />
+    @enderror
+
     @livewire('candidate-profile.experiences.category', [
         'categorySelected' => $experienciaLaboral->categoria_id
     ])
+    @error('experienciaLaboral.categoria_id')
+    <livewire:mostrar-alerta :message="$message" />
+    @enderror
+
     @livewire('candidate-profile.experiences.held-position', [
         'categorySelectedUpdate' => $experienciaLaboral->categoria_id,
         'heldPositionSelected' => $experienciaLaboral->cargo_desempenado_id
     ])
+    @error('experienciaLaboral.cargo_desempenado_id')
+    <livewire:mostrar-alerta :message="$message" />
+    @enderror
+
     @livewire('candidate-profile.experiences.salary', [
         'salarySelected' => $experienciaLaboral->salario_id
     ])
+    @error('experienciaLaboral.salario_id')
+    <livewire:mostrar-alerta :message="$message" />
+    @enderror
 
     <div class="grid grid-cols-2 gap-2 mb-8">
         @livewire('candidate-profile.experiences.initial-date-work')

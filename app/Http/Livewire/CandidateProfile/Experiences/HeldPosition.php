@@ -16,7 +16,16 @@ class HeldPosition extends Component
         "getCategorySelectedEmit",
     ];
 
+    public $rules = [
+        "heldPositionSelected" => ['required']
+    ];
+
+    public function updated ($propertyName) {
+        $this->validateOnly($propertyName);
+    }
+
     public function updatedHeldPositionSelected () {
+        $this->validate();
         $this->emit('getHeldPositionSelectedEmit', $this->heldPositionSelected);
     }
 

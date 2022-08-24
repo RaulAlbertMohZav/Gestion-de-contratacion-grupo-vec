@@ -10,7 +10,16 @@ class Countries extends Component
     public $countrySelected;
     public $countries;
 
+    public $rules = [
+        "countrySelected" => ['required']
+    ];
+
+    public function updated ($propertyName) {
+        $this->validateOnly($propertyName);
+    }
+
     public function updatedCountrySelected () {
+        $this->validate();
         $this->emit('getCountrySelectedEmit', $this->countrySelected);
     }
 
