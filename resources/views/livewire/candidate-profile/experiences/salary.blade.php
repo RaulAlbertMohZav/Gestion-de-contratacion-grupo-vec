@@ -1,5 +1,5 @@
 <div class="w-full my-4">
-    <x-label for="salary-experience" :value="__('Cargo Desempeñado')" />
+    <x-label for="salary-experience" :value="__('Salario')" />
     <select
         id="salary-experience"
         wire:model="salarySelected"

@@ -1,4 +1,4 @@
-<form class="md:w-1/2 space-y-5 mx-auto" wire:submit.prevent="saveExperiencieWork">
+<form class="md:w-1/2 space-y-5 mx-auto" wire:submit.prevent="saveExperienceWork">
     <section class="w-full my-4">
         <x-label for="nombre-cargo" :value="__('Nombre del cargo')" />
         <x-input id="nombre-cargo" class="block mt-1 w-full" type="text" wire:model="experienciaLaboral.nombre_cargo" required autofocus />
@@ -30,4 +30,34 @@
     @livewire('candidate-profile.experiences.salary', [
         'salarySelected' => $experienciaLaboral->salario_id
     ])
+
+    <div class="grid grid-cols-2 gap-2 mb-8">
+        @livewire('candidate-profile.experiences.initial-date-work')
+        @livewire('candidate-profile.experiences.final-date-work')
+    </div>
+
+    <section class="w-full my-4">
+        <x-label for="beneficios" :value="__('Beneficios recibidos')" />
+        <x-input id="beneficios" class="block mt-1 w-full" type="text" wire:model="experienciaLaboral.beneficios" required autofocus />
+
+        @error('experienciaLaboral.beneficios')
+        <livewire:mostrar-alerta :message="$message" />
+        @enderror
+    </section>
+
+    <section class="w-full my-4">
+        <x-label for="descripcion-cargo" :value="__('Descripcion del cargo')" />
+        <x-input id="descripcion-cargo" class="block mt-1 w-full" type="text" wire:model="experienciaLaboral.descripcion" required autofocus />
+
+        @error('experienciaLaboral.descripcion')
+        <livewire:mostrar-alerta :message="$message" />
+        @enderror
+    </section>
+
+    <div class="flex justify-end items-center py-20">
+        <x-button type="submit">
+            Registrar Experiencia
+        </x-button>
+    </div>
+
 </form>

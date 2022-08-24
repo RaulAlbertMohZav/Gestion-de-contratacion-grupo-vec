@@ -56,6 +56,15 @@ class ExperienciaLaboralForm extends Component
             ],
             'experienciaLaboral.fecha_inicio_trabajo' => [
                 'required', 'exists:salarios,id'
+            ],
+            'experienciaLaboral.fecha_final_trabajo' => [
+                'required', 'exists:salarios,id'
+            ],
+            'experienciaLaboral.beneficios' => [
+                'required', 'max:255'
+            ],
+            'experienciaLaboral.descripcion' => [
+                'required', 'max:255'
             ]
         ];
     }
