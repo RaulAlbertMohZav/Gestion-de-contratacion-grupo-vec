@@ -29,7 +29,7 @@ class CandidateInformation extends Model
         return $this->hasMany(ExperienciaLaboral::class);
     }
 
-    public function candidate_languaje () {
+    public function candidate_languajes () {
         return $this->hasMany(CandidateLanguaje::class);
     }
 

@@ -32,6 +32,9 @@ Route::get('create/experience', \App\Http\Livewire\CandidateProfile\ExperienciaL
 Route::get('edit/education/{education}', \App\Http\Livewire\CandidateProfile\AcademicCareer::class)->name('edit.education');
 Route::get('create/education', \App\Http\Livewire\CandidateProfile\AcademicCareer::class)->name('create.education');
 
+Route::get('edit/languaje/{language}', \App\Http\Livewire\CandidateProfile\LanguajesForm::class)->name('edit.languaje');
+Route::get('create/lenguaje', \App\Http\Livewire\CandidateProfile\LanguajesForm::class)->name('create.languaje');
+
 // Notificaciones
 Route::get('/notificaciones', NotificacionController::class)->middleware(['auth', 'verified', 'rol.reclutador'])->name('notificaciones');
 

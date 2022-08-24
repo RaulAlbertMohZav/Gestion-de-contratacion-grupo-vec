@@ -35,6 +35,12 @@ class ExpectativaLaboralForm extends Component
         $this->categories = CargoDesempenado::all();
     }
 
+
+    // Validacion del formulario en tiempo real
+    public function updated ($propertyName) {
+        $this->validateOnly($propertyName);
+    }
+
     public function updatedCategorySelected () {
         $this->validate();
 

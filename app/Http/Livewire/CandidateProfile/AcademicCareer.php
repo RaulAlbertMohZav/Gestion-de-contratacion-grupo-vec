@@ -52,7 +52,7 @@ class AcademicCareer extends Component
 
         $this->education->save();
 
-        $this->emit('ToJS-ExperienceWorkSaved');
+        $this->emit('ToJS-AcademicCareerSaved');
 
         $this->redirectRoute('llenar-datos-candidato');
     }
