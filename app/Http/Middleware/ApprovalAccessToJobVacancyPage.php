@@ -18,13 +18,12 @@ class ApprovalAccessToJobVacancyPage
         $user = null;
 
         if (CandidateProfileProcess::isAuthenticated()) {
-            $approvalOfAccessToCandidate = CandidateProfileProcess::hasCandidateProfile();
-            $user = auth()->user();
+            $approvalOfAccessToCandidate = CandidateProfileProcess::hasCandidateProfileComplete();
         }
 
 
         // Si está autenticado y no tiene un perfil de candidato con todos sus datos
-        if (CandidateProfileProcess::isAuthenticated()/* && !$approvalOfAccessToCandidate*/ && ((int) $user->rol) === 1) {
+        if (CandidateProfileProcess::isAuthenticated() && !$approvalOfAccessToCandidate) {
             // redireccionamos al formulario para completar todos sus datos
             return redirect()->route('llenar-datos-candidato');
         }

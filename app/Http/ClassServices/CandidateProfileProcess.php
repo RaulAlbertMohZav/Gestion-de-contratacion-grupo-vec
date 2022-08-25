@@ -32,7 +32,7 @@ class CandidateProfileProcess
         return self::$userAuth->candidate_information;
     }
 
-    public static function hasCandidateProfile () {
+    public static function hasCandidateProfileRelationship () {
         self::initializeProperties();
         return self::$userAuth->candidate_information !== null;
     }
@@ -40,5 +40,50 @@ class CandidateProfileProcess
     public static function isAuthenticated () {
         self::initializeProperties();
         return self::$isAuthenticated;
+    }
+
+    public static function hasCandidateProfile() {
+        self::initializeProperties();
+        return (self::$userAuth->candidate_information !== null &&
+        self::$userAuth->candidate_information->categoria !== null &&
+            self::$userAuth->candidate_information->tiempo_experiencia !== null);
+    }
+
+
+    public static function hasOneExperienceJob() {
+        self::initializeProperties();
+
+        return (self::hasCandidateProfile() &&
+        self::$userAuth->candidate_information->experiencias_laborales !== null
+        );
+    }
+
+    public static function hasOneEducation () {
+        self::initializeProperties();
+
+        return (self::hasCandidateProfile() &&
+            self::$userAuth->candidate_information->educaciones !== null
+        );
+    }
+
+    public static function hasOneLanguaje () {
+        self::initializeProperties();
+
+        return (self::hasCandidateProfile() &&
+            self::$userAuth->candidate_information->candidate_languajes !== null
+        );
+    }
+
+
+    public static function hasCandidateProfileComplete () {
+        self::initializeProperties();
+
+        return (
+            self::hasCandidateProfile() &&
+            self::hasOneExperienceJob() &&
+            self::hasOneEducation() &&
+            self::hasOneLanguaje() &&
+            self::$userAuth->rol === 1
+        );
     }
 }
