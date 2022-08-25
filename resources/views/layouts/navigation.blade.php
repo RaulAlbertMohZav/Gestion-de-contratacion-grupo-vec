@@ -49,6 +49,13 @@
 
                         <x-slot name="content">
                             <!-- Authentication -->
+                            @if(\Illuminate\Support\Facades\Auth::user()->rol === 1)
+                                <x-dropdown-link :href="route('llenar-datos-candidato')">
+                                    {{ __('Editar CV') }}
+                                </x-dropdown-link>
+                            @endif
+
+
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 

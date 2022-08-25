@@ -25,7 +25,7 @@ Route::get('/vacantes/{vacante}/edit', [VacanteController::class, 'edit'])->midd
 Route::get('/vacantes/{vacante}', [VacanteController::class, 'show'])->name('vacantes.show');
 Route::get('/candidatos/{vacante}', [CandidatosController::class, 'index'])->name('candidatos.index');
 
-Route::get('/llenar-datos/candidato', \App\Http\Livewire\LlenarDatosCandidatoCuenta::class)->middleware(['auth'])->name('llenar-datos-candidato');
+Route::get('/llenar-datos/candidato', \App\Http\Livewire\LlenarDatosCandidatoCuenta::class)->middleware(['auth', 'approval_access_to_job_vacancy_page'])->name('llenar-datos-candidato');
 Route::get('edit/experience/{experienciaLaboral}', \App\Http\Livewire\CandidateProfile\ExperienciaLaboralForm::class)->name('edit.experience_work');
 Route::get('create/experience', \App\Http\Livewire\CandidateProfile\ExperienciaLaboralForm::class)->name('create.experience_work');
 
