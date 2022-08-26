@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Salario;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use App\Models\Categoria;
 use App\Models\Vacante;
@@ -22,19 +23,32 @@ class EditarVacante extends Component
     public $descripcion;
     public $imagen;
     public $imagen_nueva;
+    public $yearOfExperienceSelected;
+    public $yearsOfExperience = [
+        "sin experiencia",
+        "menos de un año",
+        "de uno a tres años",
+        "de tres a cinco años",
+        "de cinco a diez años",
+        "de diez a quince años",
+        "más de quince años"
+    ];
 
     use WithFileUploads;
 
-    protected $rules = [
-        'titulo' => 'required|string',
-        'salario' => 'required',
-        'categoria' => 'required|exists:categorias,id',
-        'cargo_desempenado' => 'required|exists:cargo_desempenados,id',
-        'empresa' => 'required',
-        'ultimo_dia' => 'required',
-        'descripcion' => 'required',
-        'imagen_nueva' => 'nullable|image|max:1024',
-    ];
+    public function rules () {
+        return [
+            'titulo' => 'required|string',
+            'salario' => 'required',
+            'categoria' => 'required|exists:categorias,id',
+            'cargo_desempenado' => 'required|exists:cargo_desempenados,id',
+            'empresa' => 'required',
+            'ultimo_dia' => 'required',
+            'descripcion' => 'required',
+            /*'imagen' => ['nullable', Rule::when($this->imagen !== null, ['image', 'max:1024'])],*/
+            'yearOfExperienceSelected' => ['required', Rule::in($this->yearsOfExperience)]
+        ];
+    }
 
     public function mount(Vacante $vacante)
     {
@@ -43,6 +57,7 @@ class EditarVacante extends Component
         $this->salario = $vacante->salario_id;
         $this->categoria = $vacante->categoria_id;
         $this->cargo_desempenado = $vacante->cargo_desempenado->id;
+        $this->yearOfExperienceSelected = $vacante->tiempo_experiencia;
         $this->empresa = $vacante->empresa;
         $this->ultimo_dia = Carbon::parse( $vacante->ultimo_dia)->format('Y-m-d');
         $this->descripcion = $vacante->descripcion;
@@ -74,10 +89,11 @@ class EditarVacante extends Component
         $vacante->salario_id = $datos['salario'];
         $vacante->categoria_id = $datos['categoria'];
         $vacante->cargo_desempenado_id = $datos['cargo_desempenado'];
+        $vacante->tiempo_experiencia = $datos['yearOfExperienceSelected'];
         $vacante->empresa = $datos['empresa'];
         $vacante->ultimo_dia = $datos['ultimo_dia'];
         $vacante->descripcion = $datos['descripcion'];
-        $vacante->imagen = $datos['imagen'] ?? $vacante->imagen;
+        //$vacante->imagen = $datos['imagen'] ?? $vacante->imagen;
 
         // Guardar la vacante
         $vacante->save();

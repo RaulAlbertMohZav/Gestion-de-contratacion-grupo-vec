@@ -23,11 +23,21 @@ class VacanteFactory extends Factory
 
         $categoria = Categoria::all()->random();
         $cargo_laboral = $categoria->cargos_desempenados->random();
+        $tiempo_experiencias = [
+            "sin experiencia",
+            "menos de un año",
+            "de uno a tres años",
+            "de tres a cinco años",
+            "de cinco a diez años",
+            "de diez a quince años",
+            "más de quince años"
+        ];
         return [
             'titulo' => $this->faker->jobTitle(),
             'salario_id' => Salario::all()->random()->id,
             'categoria_id' => $categoria->id,
             'cargo_desempenado_id' => $cargo_laboral->id,
+            'tiempo_experiencia' => $tiempo_experiencias[random_int(0,6)],
             'empresa' => $this->faker->company(),
             'ultimo_dia' => Carbon::now()->addDays(random_int(3,28))->addMonths(random_int(1,2)),
             'descripcion' => $this->faker->catchPhrase(),

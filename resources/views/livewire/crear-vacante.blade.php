@@ -70,6 +70,24 @@
     </div>
 
     <div>
+        <x-label for="tiempo_experiencia_laboral" :value="__('Años de Experiencia para el cargo laboral')" />
+        <select
+            id="tiempo_experiencia_laboral"
+            wire:model="yearOfExperienceSelected"
+            class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full"
+        >
+            <option value="">-- Seleccione --</option>
+            @foreach ($yearsOfExperience as $year)
+                <option value="{{ $year }}">{{ $year }}</option>
+            @endforeach
+        </select>
+
+        @error('yearOfExperienceSelected')
+            <livewire:mostrar-alerta :message="$message" />
+        @enderror
+    </div>
+
+    <div>
         <x-label for="empresa" :value="__('Empresa')" />
         <x-input
             id="empresa"

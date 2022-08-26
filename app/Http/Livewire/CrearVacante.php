@@ -6,6 +6,7 @@ use App\Models\CargoDesempenado;
 use App\Models\Categoria;
 use App\Models\Salario;
 use App\Models\Vacante;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -20,19 +21,32 @@ class CrearVacante extends Component
     public $descripcion;
     public $imagen;
     public $cargos_desempenados = [];
+    public $yearOfExperienceSelected;
+    public $yearsOfExperience = [
+        "sin experiencia",
+        "menos de un año",
+        "de uno a tres años",
+        "de tres a cinco años",
+        "de cinco a diez años",
+        "de diez a quince años",
+        "más de quince años"
+    ];
 
     use WithFileUploads;
 
-    protected $rules = [
-        'titulo' => 'required|string',
-        'salario' => 'required',
-        'categoria' => 'required|exists:categorias,id',
-        'cargo_desempenado' => 'required|exists:cargo_desempenados,id',
-        'empresa' => 'required',
-        'ultimo_dia' => 'required',
-        'descripcion' => 'required',
-        'imagen' => 'required|image|max:1024',
-    ];
+    public function rules () {
+        return [
+            'titulo' => 'required|string',
+            'salario' => 'required',
+            'categoria' => 'required|exists:categorias,id',
+            'cargo_desempenado' => 'required|exists:cargo_desempenados,id',
+            'empresa' => 'required',
+            'ultimo_dia' => 'required',
+            'descripcion' => 'required',
+            'imagen' => 'required|image|max:1024',
+            'yearOfExperienceSelected' => ['required', Rule::in($this->yearsOfExperience)]
+        ];
+    }
 
     public function getCargosLaboralesPorCategoria ($category_id) {
         $this->cargos_desempenados = Categoria::query()->find($category_id)->cargos_desempenados;
@@ -60,6 +74,7 @@ class CrearVacante extends Component
             'salario_id' => $datos['salario'],
             'categoria_id' => $datos['categoria'],
             'cargo_desempenado_id' => $datos['cargo_desempenado'],
+            'tiempo_experiencia' => $datos['yearOfExperienceSelected'],
             'empresa' => $datos['empresa'],
             'ultimo_dia' => $datos['ultimo_dia'],
             'descripcion' => $datos['descripcion'],

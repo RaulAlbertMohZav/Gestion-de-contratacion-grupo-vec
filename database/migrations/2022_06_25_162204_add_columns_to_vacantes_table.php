@@ -18,6 +18,15 @@ return new class extends Migration
             $table->foreignId('salario_id')->constrained()->onDelete('cascade');
             $table->foreignId('categoria_id')->constrained()->onDelete('cascade');
             $table->foreignId('cargo_desempenado_id')->constrained()->onDelete('cascade');
+            $table->enum("tiempo_experiencia", [
+                "sin experiencia",
+                "menos de un año",
+                "de uno a tres años",
+                "de tres a cinco años",
+                "de cinco a diez años",
+                "de diez a quince años",
+                "más de quince años"
+            ]);
             $table->string('empresa');
             $table->date('ultimo_dia');
             $table->text('descripcion');

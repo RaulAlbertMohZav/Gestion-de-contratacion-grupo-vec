@@ -17,6 +17,7 @@ class Vacante extends Model
         'salario_id',
         'categoria_id',
         'cargo_desempenado_id',
+        'tiempo_experiencia',
         'empresa',
         'ultimo_dia',
         'descripcion',

@@ -44,7 +44,8 @@
 
     @auth
         @cannot('create', App\Models\Vacante::class)
-            <livewire:postular-vacante :vacante="$vacante" />
+            {{--<livewire:postular-vacante :vacante="$vacante" />--}}
+            @livewire('postular-vacante-match')
         @endcannot
     @endauth
 

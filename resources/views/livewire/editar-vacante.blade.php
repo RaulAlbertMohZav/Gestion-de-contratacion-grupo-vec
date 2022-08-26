@@ -1,4 +1,7 @@
 <form class="md:w-1/2 space-y-5" wire:submit.prevent='editarVacante'>
+    {{--@if(count($errors->all()) > 0)
+        <p>{{ $errors->first() }}</p>
+    @endif--}}
     <div>
         <x-label for="titulo" :value="__('Titulo Vacante')" />
         <x-input
@@ -65,6 +68,24 @@
         </select>
 
         @error('cargo_desempenado')
+        <livewire:mostrar-alerta :message="$message" />
+        @enderror
+    </div>
+
+    <div>
+        <x-label for="tiempo_experiencia_laboral" :value="__('Años de Experiencia para el cargo laboral')" />
+        <select
+            id="tiempo_experiencia_laboral"
+            wire:model="yearOfExperienceSelected"
+            class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full"
+        >
+            <option value="">-- Seleccione --</option>
+            @foreach ($yearsOfExperience as $year)
+                <option value="{{ $year }}">{{ $year }}</option>
+            @endforeach
+        </select>
+
+        @error('yearOfExperienceSelected')
         <livewire:mostrar-alerta :message="$message" />
         @enderror
     </div>
@@ -141,7 +162,7 @@
         @enderror
     </div>
 
-    <x-button>
+    <x-button type="submit">
         Guardar Cambios
     </x-button>
 
