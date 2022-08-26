@@ -49,6 +49,11 @@ div:after {
 .preview-cv .main-content h1 {
     font-size: 18px; }
 
+.preview-cv .title-school {
+    font-size: 16px;
+    font-weight: 500;
+}
+
 .preview-cv .wrap-data {
     box-sizing: border-box;
     font-size: 10px;

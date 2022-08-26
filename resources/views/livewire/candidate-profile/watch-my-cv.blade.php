@@ -9,62 +9,67 @@
             <h1>acerca de mi</h1>
             <div class="wrap-data">
                 <span class="field">Edad</span>
-                <span class="data">22 años</span>
+                <span class="data">{{ $UserData->edad }}</span>
             </div>
             <div class="wrap-data">
                 <span class="field">Teléfono</span>
                 <span class="data">
-9984875616<br>
+                {{ $UserData->telefono }}<br>
                                                                                 </span>
             </div>
             <div class="wrap-data">
                 <span class="field">e-mail</span>
-                <span class="data">ramz.162025@gmail.com </span>
+                <span class="data">{{ $UserData->email }} </span>
             </div>
             <div class="wrap-data">
                 <span class="field">nacionalidad</span>
-                <span class="data">México</span>
+                <span class="data">{{ $UserData->nacionalidad }}</span>
             </div>
             <div class="wrap-data">
                 <span class="field">zona de residencia</span>
                 <span class="data">
-
-                        Cancún
+                    {{ $UserData->zona_de_residencia }}
                     </span>
 
             </div>
 
             <div class="wrap-data">
                 <span class="field">Vehículo: </span>
-                <span class="data next">No</span>
+                <span class="data next">{{ $UserData->tiene_vehiculo }}</span>
             </div>
             <div class="wrap-data">
                 <span class="field">Licencia: </span>
-                <span class="data next">No</span>
+                <span class="data next">{{ $UserData->tiene_licencia_vehiculo }}</span>
             </div>
             <span class="clear"></span>
         </div>
-        <div class="educacion seccion">
-            <h1>educación</h1>
-        </div>
 
-        <div class="eduSecundaria seccion">
+        {{--<div class="eduSecundaria seccion">
             <h1 class="cleanH1">educación secundaria:</h1>
             <div class="wrap-data">
                 <div class="eduSec nivel">
                     Completa
                 </div>
             </div>
-        </div>
+        </div>--}}
         <div class="otrosEstudios seccion">
-            <h1>otros estudios</h1>
-            <div class="wrap-data">
-                <div class="edu year">2022</div>
-                <div class="edu title">Ingeniero en Sistemas Computacionales</div>
-                <div class="edu detail">
-                    México
+            <h1>Educación</h1>
+            @foreach($EducationsCandidate as $education)
+                <div class="wrap-data">
+                    <h2 class="title-school">"{{ $education->escolaridad }}"</h2>
+                    <div class="wrap-data">
+                        <div class="eduSec nivel">
+                            - {{ $education->nombre_institucion }}
+                        </div>
+                    </div>
+                    <div class="edu year">{{ $education->ano_finalizacion }}</div>
+                    <div class="edu title">{{ $education->titulo }}</div>
+                    <div class="edu detail">
+                        {{ $education->pais->pais }}
+                    </div>
                 </div>
-            </div>
+            @endforeach
+
         </div>
     </div>
     <div class="pcv-sideR">
