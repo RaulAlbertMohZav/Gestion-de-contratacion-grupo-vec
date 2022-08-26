@@ -15,6 +15,8 @@ class EditarVacante extends Component
     public $titulo;
     public $salario;
     public $categoria;
+    public $cargo_desempenado;
+    public $cargos_desempenados = [];
     public $empresa;
     public $ultimo_dia;
     public $descripcion;
@@ -26,7 +28,8 @@ class EditarVacante extends Component
     protected $rules = [
         'titulo' => 'required|string',
         'salario' => 'required',
-        'categoria' => 'required',
+        'categoria' => 'required|exists:categorias,id',
+        'cargo_desempenado' => 'required|exists:cargo_desempenados,id',
         'empresa' => 'required',
         'ultimo_dia' => 'required',
         'descripcion' => 'required',
@@ -39,13 +42,21 @@ class EditarVacante extends Component
         $this->titulo = $vacante->titulo;
         $this->salario = $vacante->salario_id;
         $this->categoria = $vacante->categoria_id;
+        $this->cargo_desempenado = $vacante->cargo_desempenado->id;
         $this->empresa = $vacante->empresa;
         $this->ultimo_dia = Carbon::parse( $vacante->ultimo_dia)->format('Y-m-d');
         $this->descripcion = $vacante->descripcion;
         $this->imagen = $vacante->imagen;
+
+        $this->cargos_desempenados = $vacante->categoria->cargos_desempenados;
     }
 
-    public function editarVacante() 
+    public function updatedCategoria () {
+        $this->cargo_desempenado = null;
+        $this->cargos_desempenados = Categoria::query()->find($this->categoria)->cargos_desempenados;
+    }
+
+    public function editarVacante()
     {
         $datos = $this->validate();
 
@@ -62,6 +73,7 @@ class EditarVacante extends Component
         $vacante->titulo = $datos['titulo'];
         $vacante->salario_id = $datos['salario'];
         $vacante->categoria_id = $datos['categoria'];
+        $vacante->cargo_desempenado_id = $datos['cargo_desempenado'];
         $vacante->empresa = $datos['empresa'];
         $vacante->ultimo_dia = $datos['ultimo_dia'];
         $vacante->descripcion = $datos['descripcion'];

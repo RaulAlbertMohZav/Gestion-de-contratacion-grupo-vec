@@ -1,12 +1,12 @@
 <form class="md:w-1/2 space-y-5" wire:submit.prevent='editarVacante'>
     <div>
         <x-label for="titulo" :value="__('Titulo Vacante')" />
-        <x-input 
-            id="titulo" 
-            class="block mt-1 w-full" 
-            type="text" 
-            wire:model="titulo" 
-            :value="old('titulo')" 
+        <x-input
+            id="titulo"
+            class="block mt-1 w-full"
+            type="text"
+            wire:model="titulo"
+            :value="old('titulo')"
             placeholder="Titulo Vacante"
         />
 
@@ -52,13 +52,31 @@
     </div>
 
     <div>
+        <x-label for="cargo_laboral" :value="__('Cargo Laboral deseado')" />
+        <select
+            id="cargo_laboral"
+            wire:model="cargo_desempenado"
+            class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full"
+        >
+            <option value="">-- Seleccione --</option>
+            @foreach ($cargos_desempenados as $cargo)
+                <option value="{{ $cargo->id }}">{{$cargo->cargo_desempenado}}</option>
+            @endforeach
+        </select>
+
+        @error('cargo_desempenado')
+        <livewire:mostrar-alerta :message="$message" />
+        @enderror
+    </div>
+
+    <div>
         <x-label for="empresa" :value="__('Empresa')" />
-        <x-input 
-            id="empresa" 
-            class="block mt-1 w-full" 
-            type="text" 
-            wire:model="empresa" 
-            :value="old('empresa')" 
+        <x-input
+            id="empresa"
+            class="block mt-1 w-full"
+            type="text"
+            wire:model="empresa"
+            :value="old('empresa')"
             placeholder="Empresa: ej. Netflix, Uber, Shopify"
         />
 
@@ -69,12 +87,12 @@
 
     <div>
         <x-label for="ultimo_dia" :value="__('Último Día para postularse')" />
-        <x-input 
-            id="ultimo_dia" 
-            class="block mt-1 w-full" 
-            type="date" 
-            wire:model="ultimo_dia" 
-            :value="old('ultimo_dia')" 
+        <x-input
+            id="ultimo_dia"
+            class="block mt-1 w-full"
+            type="date"
+            wire:model="ultimo_dia"
+            :value="old('ultimo_dia')"
         />
 
         @error('ultimo_dia')
@@ -97,14 +115,14 @@
 
     <div>
         <x-label for="imagen" :value="__('Imagen')" />
-        <x-input 
-            id="imagen" 
-            class="block mt-1 w-full" 
-            type="file" 
+        <x-input
+            id="imagen"
+            class="block mt-1 w-full"
+            type="file"
             wire:model="imagen_nueva"
             accept="image/*"
         />
-        
+
         <div class="my-5 w-80">
             <x-label :value="__('Imagen Actual')" />
 
@@ -112,7 +130,7 @@
         </div>
 
         <div class="my-5 w-80">
-            @if($imagen_nueva) 
+            @if($imagen_nueva)
                 Imagen Nueva:
                 <img src="{{ $imagen_nueva->temporaryUrl() }}" >
             @endif

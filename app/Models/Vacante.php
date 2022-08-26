@@ -10,12 +10,13 @@ class Vacante extends Model
     use HasFactory;
 
     protected $dates = ['ultimo_dia'];
-    
+
 
     protected $fillable = [
-        'titulo', 
+        'titulo',
         'salario_id',
         'categoria_id',
+        'cargo_desempenado_id',
         'empresa',
         'ultimo_dia',
         'descripcion',
@@ -23,12 +24,12 @@ class Vacante extends Model
         'user_id'
     ];
 
-    public function categoria() 
+    public function categoria()
     {
         return $this->belongsTo(Categoria::class);
     }
 
-    public function salario() 
+    public function salario()
     {
         return $this->belongsTo(Salario::class);
     }
@@ -37,6 +38,11 @@ class Vacante extends Model
     {
         return $this->hasMany(Candidato::class)->orderBy('created_at', 'DESC');
     }
+
+    public function cargo_desempenado () {
+        return $this->belongsTo(CargoDesempenado::class);
+    }
+
 
     public function reclutador()
     {

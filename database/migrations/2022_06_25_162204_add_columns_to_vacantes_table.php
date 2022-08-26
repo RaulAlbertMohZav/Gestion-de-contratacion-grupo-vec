@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->foreignId('salario_id')->constrained()->onDelete('cascade');
             $table->foreignId('categoria_id')->constrained()->onDelete('cascade');
+            $table->foreignId('cargo_desempenado_id')->constrained()->onDelete('cascade');
             $table->string('empresa');
             $table->date('ultimo_dia');
             $table->text('descripcion');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\CargoDesempenado;
 use App\Models\Categoria;
 use App\Models\Salario;
 use App\Models\Vacante;
@@ -13,22 +14,35 @@ class CrearVacante extends Component
     public $titulo;
     public $salario;
     public $categoria;
+    public $cargo_desempenado;
     public $empresa;
     public $ultimo_dia;
     public $descripcion;
     public $imagen;
+    public $cargos_desempenados = [];
 
     use WithFileUploads;
 
     protected $rules = [
         'titulo' => 'required|string',
         'salario' => 'required',
-        'categoria' => 'required',
+        'categoria' => 'required|exists:categorias,id',
+        'cargo_desempenado' => 'required|exists:cargo_desempenados,id',
         'empresa' => 'required',
         'ultimo_dia' => 'required',
         'descripcion' => 'required',
         'imagen' => 'required|image|max:1024',
     ];
+
+    public function getCargosLaboralesPorCategoria ($category_id) {
+        $this->cargos_desempenados = Categoria::query()->find($category_id)->cargos_desempenados;
+    }
+
+    public function updatedCategoria () {
+        $this->getCargosLaboralesPorCategoria(
+            $this->categoria
+        );
+    }
 
     public function crearVacante()
     {
@@ -45,6 +59,7 @@ class CrearVacante extends Component
             'titulo' => $datos['titulo'],
             'salario_id' => $datos['salario'],
             'categoria_id' => $datos['categoria'],
+            'cargo_desempenado_id' => $datos['cargo_desempenado'],
             'empresa' => $datos['empresa'],
             'ultimo_dia' => $datos['ultimo_dia'],
             'descripcion' => $datos['descripcion'],
@@ -53,7 +68,7 @@ class CrearVacante extends Component
         ]);
 
 
-        // Crear un mensaje 
+        // Crear un mensaje
         session()->flash('mensaje', 'La Vacante se publicó correctamente');
 
 
@@ -61,11 +76,13 @@ class CrearVacante extends Component
         return redirect()->route('vacantes.index');
     }
 
+
     public function render()
     {
         // Consultar BD
         $salarios = Salario::all();
         $categorias = Categoria::all();
+        $cargos_desempenados = CargoDesempenado::all();
 
         return view('livewire.crear-vacante', [
             'salarios' => $salarios,
