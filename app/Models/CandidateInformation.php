@@ -13,7 +13,7 @@ class CandidateInformation extends Model
 
     protected $fillable = [
         "user_id",
-        "categoria_id",
+        "cargo_desempenado_id",
         "tiempo_experiencia",
     ];
 
@@ -21,8 +21,8 @@ class CandidateInformation extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function categoria () { // Expectativa laboral
-        return $this->belongsTo(Categoria::class);
+    public function cargo_desempenado () { // Expectativa laboral
+        return $this->belongsTo(CargoDesempenado::class);
     }
 
     public function experiencias_laborales () {

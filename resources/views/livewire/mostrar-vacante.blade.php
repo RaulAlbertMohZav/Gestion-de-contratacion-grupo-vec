@@ -19,6 +19,14 @@
             <p class="font-bold text-sm uppercase text-gray-800 my-3">Salario:
                 <span class="normal-case font-normal">{{$vacante->salario->salario}}</span>
             </p>
+
+            <p class="font-bold text-sm uppercase text-gray-800 my-3">Cargo Laboral:
+                <span class="normal-case font-normal">{{$vacante->cargo_desempenado->cargo_desempenado}}</span>
+            </p>
+
+            <p class="font-bold text-sm uppercase text-gray-800 my-3">Años de Experiencia Requeridos:
+                <span class="normal-case font-normal">{{$vacante->tiempo_experiencia}}</span>
+            </p>
         </div>
     </div>
 
@@ -45,7 +53,9 @@
     @auth
         @cannot('create', App\Models\Vacante::class)
             {{--<livewire:postular-vacante :vacante="$vacante" />--}}
-            @livewire('postular-vacante-match')
+            @livewire('postular-vacante-match', [
+                'vacante_id' => $vacante->id
+            ])
         @endcannot
     @endauth
 

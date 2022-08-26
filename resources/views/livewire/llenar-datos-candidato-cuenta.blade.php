@@ -4,7 +4,17 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg" >
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h1 class="text-2xl font-bold text-center my-10">Editar CV</h1>
-
+                    @if(! \App\Http\ClassServices\CandidateProfileProcess::hasCandidateProfileComplete())
+                        <hr>
+                        <section class="md:flex md:justify-center px-2 py-4 w-full">
+                            <p>Por favor, completa los datos de tu CV para poder postularte a vacantes</p>
+                        </section>
+                    @else
+                        <hr>
+                        <section class="md:flex md:justify-center px-2 py-4 w-full">
+                            <p>¡Ya puedes postular a vacantes!</p>
+                        </section>
+                    @endif
                     <form wire:submit.prevent="saveDataUserCV">
                         <section class="md:flex md:justify-center px-2 py-4">
                             <section class="w-full my-4">

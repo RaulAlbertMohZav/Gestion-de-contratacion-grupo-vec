@@ -35,6 +35,7 @@
                             <a
                                 class="bg-indigo-500 p-3 text-sm uppercase font-bold text-white rounded-lg block text-center"
                                 href="{{ route('vacantes.show', $vacante->id) }}"
+                                target="_blank"
                             >Ver Vacante</a>
                         </div>
                         {{--@guest

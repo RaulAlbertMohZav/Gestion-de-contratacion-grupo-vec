@@ -26,7 +26,8 @@ Route::get('/vacantes/{vacante}', [VacanteController::class, 'show'])->name('vac
 Route::get('/candidatos/{vacante}', [CandidatosController::class, 'index'])->name('candidatos.index');
 
 Route::get('/llenar-datos/candidato', \App\Http\Livewire\LlenarDatosCandidatoCuenta::class)->middleware(['auth', 'approval_access_to_edit_cv_page'])->name('llenar-datos-candidato');
-Route::get('/ver-mi-cv', \App\Http\Livewire\CandidateProfile\WatchMyCv::class)->middleware(['auth', 'approval_access_to_watch_cv_page'])->name('ver-cv');
+Route::get('/ver-cv/{user?}', \App\Http\Livewire\CandidateProfile\WatchMyCv::class)->middleware(['auth', 'approval_access_to_watch_cv_page'])->name('ver-cv');
+/*Route::get('/ver-cv/{user}', \App\Http\Livewire\CandidateProfile\WatchMyCv::class)->middleware(['auth', 'approval_access_to_watch_cv_page'])->name('ver-cv-candidato');*/
 Route::get('edit/experience/{experienciaLaboral}', \App\Http\Livewire\CandidateProfile\ExperienciaLaboralForm::class)->name('edit.experience_work');
 Route::get('create/experience', \App\Http\Livewire\CandidateProfile\ExperienciaLaboralForm::class)->name('create.experience_work');
 

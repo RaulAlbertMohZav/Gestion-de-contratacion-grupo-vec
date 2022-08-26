@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\CandidateInformation;
+use App\Models\CargoDesempenado;
 use App\Models\Categoria;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -31,7 +32,7 @@ class CandidatoInformationSeeder extends Seeder
 
             CandidateInformation::query()->create([
                 'user_id' => $user->id,
-                'categoria_id' => Categoria::all()->random()->id,
+                'cargo_desempenado_id' => CargoDesempenado::all()->random()->id,
                 'tiempo_experiencia' => $tiempos_experiencia[random_int(0, count($tiempos_experiencia) - 1)]
             ]);
 

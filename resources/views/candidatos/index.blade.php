@@ -12,7 +12,7 @@
                     <h1 class="text-2xl font-bold text-center my-10">
                         Candidatos Vacante: {{ $vacante->titulo }}
                     </h1>
-                    
+
                     <div class="md:flex md:justify-center p-5">
                         <ul class="divide-y divide-gray-200 w-full">
                             @forelse ($vacante->candidatos as $candidato)
@@ -26,9 +26,9 @@
                                     </div>
 
                                     <div>
-                                        <a 
-                                            class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50" 
-                                            href="{{ asset('storage/cv/' . $candidato->cv ) }}"
+                                        <a
+                                            class="inline-flex items-center shadow-sm px-2.5 py-0.5 border border-gray-300 text-sm leading-5 font-medium rounded-full text-gray-700 bg-white hover:bg-gray-50"
+                                            href="{{ route('ver-cv', $candidato->user_id) }}"
                                             target="_blank"
                                             rel="noreferrer noopener"
                                         >

@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Http\ClassServices\CandidateProfileProcess;
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 
@@ -17,8 +18,27 @@ class ApprovalAccessToWatchCVPage
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!CandidateProfileProcess::hasCandidateProfileComplete()) {
-            return redirect()->route('llenar-datos-candidato');
+
+        if (auth()->user()->rol === 1 && $request->route('user') !== (string) auth()->user()->id && $request->route('user') !== null) {
+            if (!CandidateProfileProcess::hasCandidateProfileComplete()) {
+                return redirect()->route('llenar-datos-candidato');
+            }
+
+            return redirect()->route('home');
+        }
+
+        if (auth()->user()->rol === 2) {
+            if ($request->route('user') !== null) {
+                $user = User::query()->find($request->route('user'));
+                if ($user->rol === 1) {
+                    return $next($request);
+                }
+
+                return redirect()->route('vacantes.index');
+
+            } else {
+                return redirect()->route('vacantes.index');
+            }
         }
 
         return $next($request);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\CandidateProfile;
 
+use App\Models\User;
 use Livewire\Component;
 
 class WatchMyCv extends Component
@@ -13,8 +14,12 @@ class WatchMyCv extends Component
     public $EducationsCandidate;
     public $LanguagesCandidate;
 
-    public function mount () {
-        $user = auth()->user();
+    public function mount ($user = null) {
+        if ($user === null) {
+            $user = auth()->user();
+        } else {
+            $user = User::query()->findOrFail($user);
+        }
 
         $this->UserData = $user;
         $this->CandidateProfileData = $user->candidate_information;

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('vacante_id')->constrained()->onDelete('cascade');
-            $table->string('cv');
+            /*$table->string('cv');*/
             $table->timestamps();
         });
     }

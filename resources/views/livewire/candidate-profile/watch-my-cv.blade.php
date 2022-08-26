@@ -68,6 +68,7 @@
                         {{ $education->pais->pais }}
                     </div>
                 </div>
+                <hr>
             @endforeach
 
         </div>
@@ -89,7 +90,7 @@
                 </div>
                 <div class="header lastExperienceTitle">
 
-                    {{ $JobExperiencesCandidate[0]->nombre_cargo }}
+                    {{ $UserData->candidate_information->cargo_desempenado->cargo_desempenado }}
                 </div>
 
             </div>

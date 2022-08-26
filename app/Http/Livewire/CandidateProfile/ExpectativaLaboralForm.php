@@ -16,7 +16,7 @@ class ExpectativaLaboralForm extends Component
     public $categories;
 
     protected $rules = [
-        'categorySelected' => ['required', 'exists:categorias,id']
+        'categorySelected' => ['required', 'exists:cargo_desempenados,id']
     ];
 
     public $validationAttributes = [
@@ -26,7 +26,7 @@ class ExpectativaLaboralForm extends Component
     public function mount() {
 
         if (CandidateProfileProcess::hasCandidateProfile()) {
-            $this->categorySelected = CandidateProfileProcess::getCandidateProfile()->categoria_id;
+            $this->categorySelected = CandidateProfileProcess::getCandidateProfile()->cargo_desempenado_id;
         }
         $this->getCategories();
     }
@@ -46,12 +46,12 @@ class ExpectativaLaboralForm extends Component
 
         if (CandidateProfileProcess::hasCandidateProfile()) {
             auth()->user()->candidate_information()->update([
-                "categoria_id" => $this->categorySelected
+                "cargo_desempenado_id" => $this->categorySelected
             ]);
         } else {
             CandidateInformation::query()->create([
                 "user_id" => auth()->user()->id,
-                "categoria_id" => $this->categorySelected
+                "cargo_desempenado_id" => $this->categorySelected
             ]);
         }
 

@@ -45,7 +45,7 @@ class CandidateProfileProcess
     public static function hasCandidateProfile() {
         self::initializeProperties();
         return (self::$userAuth->candidate_information !== null &&
-        self::$userAuth->candidate_information->categoria !== null &&
+        self::$userAuth->candidate_information->cargo_desempenado !== null &&
             self::$userAuth->candidate_information->tiempo_experiencia !== null);
     }
 
