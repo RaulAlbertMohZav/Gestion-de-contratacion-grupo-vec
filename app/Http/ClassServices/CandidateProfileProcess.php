@@ -48,6 +48,10 @@ class CandidateProfileProcess
         self::$userAuth->candidate_information->cargo_desempenado !== null &&
             self::$userAuth->candidate_information->tiempo_experiencia !== null);
     }
+    public static function hasCandidateProfileRecord() {
+        self::initializeProperties();
+        return (self::$userAuth->candidate_information !== null);
+    }
 
 
     public static function hasOneExperienceJob() {

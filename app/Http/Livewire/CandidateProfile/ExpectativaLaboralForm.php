@@ -44,12 +44,12 @@ class ExpectativaLaboralForm extends Component
     public function updatedCategorySelected () {
         $this->validate();
 
-        if (CandidateProfileProcess::hasCandidateProfile()) {
+        if (CandidateProfileProcess::hasCandidateProfileRecord()) {
             auth()->user()->candidate_information()->update([
                 "cargo_desempenado_id" => $this->categorySelected
             ]);
         } else {
-            CandidateInformation::query()->create([
+            auth()->user()->candidate_information()->create([
                 "user_id" => auth()->user()->id,
                 "cargo_desempenado_id" => $this->categorySelected
             ]);

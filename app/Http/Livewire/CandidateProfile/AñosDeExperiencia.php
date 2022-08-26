@@ -42,12 +42,12 @@ class AñosDeExperiencia extends Component
     public function updatedYearOfExperienceSelected () {
         $this->validate();
 
-        if (CandidateProfileProcess::hasCandidateProfile()) {
+        if (CandidateProfileProcess::hasCandidateProfileRecord()) {
             auth()->user()->candidate_information()->update([
                 "tiempo_experiencia" => $this->yearOfExperienceSelected
             ]);
         } else {
-            CandidateInformation::query()->create([
+            auth()->user()->candidate_information()->create([
                 "user_id" => auth()->user()->id,
                 "tiempo_experiencia" => $this->yearOfExperienceSelected
             ]);
