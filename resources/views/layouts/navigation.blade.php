@@ -55,6 +55,12 @@
                                 </x-dropdown-link>
                             @endif
 
+                            @if(\App\Http\ClassServices\CandidateProfileProcess::hasCandidateProfileComplete())
+                                <x-dropdown-link :href="route('ver-cv')">
+                                    {{ __('Ver mi CV') }}
+                                </x-dropdown-link>
+                            @endif
+
 
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

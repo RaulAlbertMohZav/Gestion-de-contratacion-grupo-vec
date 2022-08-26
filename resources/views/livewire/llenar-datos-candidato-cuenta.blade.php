@@ -24,6 +24,15 @@
                     <section class="md:flex md:justify-center px-2 py-4 w-full">
                         @livewire('candidate-profile.languajes')
                     </section>
+                    @if(\App\Http\ClassServices\CandidateProfileProcess::hasCandidateProfileComplete())
+                        <hr>
+                        <section class="md:flex md:justify-center px-2 py-4 w-full">
+                            <x-button wire:click="redirectToJobVacanciesPage">
+                                ¡Ya puedes postular a vacantes!
+                            </x-button>
+                        </section>
+                    @endif
+
                 </div>
             </div>
         </div>

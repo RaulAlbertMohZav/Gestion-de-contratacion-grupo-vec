@@ -54,7 +54,8 @@ class CandidateProfileProcess
         self::initializeProperties();
 
         return (self::hasCandidateProfile() &&
-        self::$userAuth->candidate_information->experiencias_laborales !== null
+            self::$userAuth->candidate_information->experiencias_laborales !== null &&
+            self::$userAuth->candidate_information->experiencias_laborales->count() > 0
         );
     }
 
@@ -62,7 +63,8 @@ class CandidateProfileProcess
         self::initializeProperties();
 
         return (self::hasCandidateProfile() &&
-            self::$userAuth->candidate_information->educaciones !== null
+            self::$userAuth->candidate_information->educaciones !== null &&
+            self::$userAuth->candidate_information->educaciones->count() > 0
         );
     }
 
@@ -70,7 +72,8 @@ class CandidateProfileProcess
         self::initializeProperties();
 
         return (self::hasCandidateProfile() &&
-            self::$userAuth->candidate_information->candidate_languajes !== null
+            self::$userAuth->candidate_information->candidate_languajes !== null &&
+            self::$userAuth->candidate_information->candidate_languajes->count() > 0
         );
     }
 

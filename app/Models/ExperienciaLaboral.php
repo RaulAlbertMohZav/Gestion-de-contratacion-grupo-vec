@@ -28,7 +28,7 @@ class ExperienciaLaboral extends Model
         return $this->belongsTo(Pais::class);
     }
 
-    public function actividad_id () {
+    public function actividad () {
         return $this->belongsTo(Actividad::class);
     }
 
@@ -40,11 +40,11 @@ class ExperienciaLaboral extends Model
         return $this->belongsTo(Categoria::class);
     }
 
-    public function cargo_desempeñado () {
+    public function cargo_desempenado () {
         return $this->belongsTo(CargoDesempenado::class);
     }
 
-    public function rango_salarial () {
+    public function salario () {
         return $this->belongsTo(Salario::class);
     }
 

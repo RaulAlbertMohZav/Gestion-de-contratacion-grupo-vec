@@ -55,6 +55,8 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'approval_access_to_job_vacancy_page' => \App\Http\Middleware\ApprovalAccessToJobVacancyPage::class,
+        'approval_access_to_watch_cv_page' => \App\Http\Middleware\ApprovalAccessToWatchCVPage::class,
+        'approval_access_to_edit_cv_page' => \App\Http\Middleware\ApprovedAccessToEditCVPage::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
