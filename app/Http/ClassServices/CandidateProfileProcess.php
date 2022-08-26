@@ -78,6 +78,19 @@ class CandidateProfileProcess
     }
 
 
+    public static function hasProfileUserCVComplete () {
+        self::initializeProperties();
+
+        return (self::hasCandidateProfile() &&
+            self::$userAuth->edad !== null &&
+            self::$userAuth->telefono !== null &&
+            self::$userAuth->nacionalidad !== null &&
+            self::$userAuth->zona_de_residencia !== null &&
+            self::$userAuth->tiene_vehiculo !== null &&
+            self::$userAuth->tiene_licencia_vehiculo !== null
+        );
+    }
+
     public static function hasCandidateProfileComplete () {
         self::initializeProperties();
 
@@ -86,6 +99,7 @@ class CandidateProfileProcess
             self::hasOneExperienceJob() &&
             self::hasOneEducation() &&
             self::hasOneLanguaje() &&
+            self::hasProfileUserCVComplete() &&
             self::$userAuth->rol === 1
         );
     }

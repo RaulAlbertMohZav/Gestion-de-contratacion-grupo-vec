@@ -17,6 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('edad')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('nacionalidad')->nullable();
+            $table->string('zona_de_residencia')->nullable();
+            $table->enum('tiene_vehiculo', ['Si', 'No'])->nullable();
+            $table->enum('tiene_licencia_vehiculo', ['Si', 'No'])->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
