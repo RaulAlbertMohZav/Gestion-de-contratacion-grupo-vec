@@ -45,7 +45,7 @@ class EditarVacante extends Component
             'empresa' => 'required',
             'ultimo_dia' => 'required',
             'descripcion' => 'required',
-            /*'imagen' => ['nullable', Rule::when($this->imagen !== null, ['image', 'max:1024'])],*/
+            /* 'imagen' => [Rule::when((bool) $this->imagen_nueva, ['image', 'max:1024'])], */
             'yearOfExperienceSelected' => ['required', Rule::in($this->yearsOfExperience)]
         ];
     }
@@ -93,7 +93,7 @@ class EditarVacante extends Component
         $vacante->empresa = $datos['empresa'];
         $vacante->ultimo_dia = $datos['ultimo_dia'];
         $vacante->descripcion = $datos['descripcion'];
-        //$vacante->imagen = $datos['imagen'] ?? $vacante->imagen;
+        $vacante->imagen = $datos['imagen'] ?? $vacante->imagen;
 
         // Guardar la vacante
         $vacante->save();
