@@ -3,6 +3,7 @@
 use App\Http\Controllers\CandidatosController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NotificacionController;
+use App\Http\Controllers\SendEmailInformation;
 use App\Http\Controllers\VacanteController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', HomeController::class )->middleware('approval_access_to_job_vacancy_page')->name('home');
+Route::get('/', function () {
+    return view('welcome');
+} )->name('welcome');
+
+Route::get('/ver-vacantes', HomeController::class )->middleware('approval_access_to_job_vacancy_page')->name('home');
 
 Route::get('/dashboard', [VacanteController::class, 'index'])->middleware(['auth', 'verified', 'rol.reclutador'])->name('vacantes.index');
 Route::get('/vacantes/create', [VacanteController::class, 'create'])->middleware(['auth', 'verified'])->name('vacantes.create');
@@ -39,5 +44,7 @@ Route::get('create/lenguaje', \App\Http\Livewire\CandidateProfile\LanguajesForm:
 
 // Notificaciones
 Route::get('/notificaciones', NotificacionController::class)->middleware(['auth', 'verified', 'rol.reclutador'])->name('notificaciones');
+
+Route::post('/send-email-contact',[SendEmailInformation::class, 'sendContactInformation'])->name('send-email-contact');
 
 require __DIR__.'/auth.php';

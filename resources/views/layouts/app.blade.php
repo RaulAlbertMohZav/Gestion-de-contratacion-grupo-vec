@@ -4,6 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <link rel="icon" type="image/ico" href="{{asset("icons/favicon.ico")}}">
+        <link rel="icon" type="image/ico" sizes="128x128" href="{{asset("icons/favicon-128x128.ico")}}">
+        <link rel="icon" type="image/ico" sizes="96x96" href="{{asset("icons/favicon-96x96.ico")}}">
+        <link rel="icon" type="image/ico" sizes="32x32" href="{{asset("icons/favicon-32x32.ico")}}">
+        <link rel="icon" type="image/ico" sizes="16x16" href="{{asset("icons/favicon-16x16.ico")}}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 

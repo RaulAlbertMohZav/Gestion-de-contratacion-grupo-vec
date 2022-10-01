@@ -5,7 +5,10 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('vacantes.index') }}">
+                    {{--<a href="{{ route('vacantes.index') }}">
+                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                    </a>--}}
+                    <a href="{{ route('welcome') }}">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
@@ -22,6 +25,14 @@
                             </x-nav-link>
                         </div>
                     @endcan
+
+                    @if(\Illuminate\Support\Facades\Auth::user()->rol === 1 && \App\Http\ClassServices\CandidateProfileProcess::hasCandidateProfileComplete())
+                        <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                            <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                                {{ __('Ver Vacantes') }}
+                            </x-nav-link>
+                        </div>
+                    @endif
                 @endauth
             </div>
 
@@ -104,12 +115,20 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         @auth
             <div class="pt-2 pb-3 space-y-1">
-                <x-responsive-nav-link :href="route('vacantes.index')" :active="request()->routeIs('vacantes.index')">
-                    {{ __('Mis Vacantes') }}
-                </x-responsive-nav-link>
-                <x-responsive-nav-link :href="route('vacantes.create')" :active="request()->routeIs('vacantes.create')">
-                    {{ __('Crear Vacante') }}
-                </x-responsive-nav-link>
+                @if(auth()->user()->rol === 2)
+                    <x-responsive-nav-link :href="route('vacantes.index')" :active="request()->routeIs('vacantes.index')">
+                        {{ __('Mis Vacantes') }}
+                    </x-responsive-nav-link>
+                    <x-responsive-nav-link :href="route('vacantes.create')" :active="request()->routeIs('vacantes.create')">
+                        {{ __('Crear Vacante') }}
+                    </x-responsive-nav-link>
+                @endif
+
+                    @if(\Illuminate\Support\Facades\Auth::user()->rol === 1 && \App\Http\ClassServices\CandidateProfileProcess::hasCandidateProfileComplete())
+                        <x-responsive-nav-link :href="route('home')" :active="request()->routeIs('home')">
+                            {{ __('Ver Vacantes') }}
+                        </x-responsive-nav-link>
+                    @endif
 
                 @if(auth()->user()->rol === 2)
                     <div class="flex gap-2 items-center p-3">
