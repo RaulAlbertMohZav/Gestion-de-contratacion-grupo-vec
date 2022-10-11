@@ -28,7 +28,7 @@
 
             <!-- Email Address -->
             <div class="mt-4">
-                <x-label for="rol" :value="__('¿Que tipo de Cuenta deseas en DevJobs?')" />
+                <x-label for="rol" :value="__('¿Selecciona Perfil para Grupo Vec?')" />
 
                 <select
                     id="rol"
@@ -37,7 +37,7 @@
                 >
                     <option value="">-- Selecciona un rol --</option>
                     <option value="1">Trabajador - Obtener Empleo</option>
-                    <option value="2">Reclutador - Publicar Empleos</option>
+                    <!--<option value="2">Reclutador - Publicar Empleos</option>-->
                 </select>
             </div>
 

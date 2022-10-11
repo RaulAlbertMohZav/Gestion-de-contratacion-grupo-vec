@@ -48,12 +48,13 @@
                 <div class="w-full px-4 ml-auto mr-auto text-center lg:w-6/12">
                     <div class="pr-12">
                         <h1 class="text-5xl font-semibold text-white">
-                            Your story starts with us.
+                            Grupo Vec
                         </h1>
                         <p class="mt-4 text-lg text-gray-300">
-                            This is a simple example of a Landing Page you can build using
-                            Tailwind Starter Kit. It features multiple CSS components
-                            based on the Tailwindcss design system.
+                            Especialista en Outsourcing y Tercerización
+                        </p>
+                        <p class="mt-4 text-lg text-gray-300">
+                            Reclutamiento y Selección
                         </p>
                     </div>
                 </div>
@@ -92,10 +93,10 @@
                             >
                                 <i class="fas fa-award"></i>
                             </div>
-                            <h6 class="text-xl font-semibold">Awarded Agency</h6>
+                            <h6 class="text-xl font-semibold">Outsourcing y tercerización</h6>
                             <p class="mt-2 mb-4 text-gray-600">
-                                Divide details about your product or agency work into parts.
-                                A paragraph describing a feature will be enough.
+                            Hoy en día las empresas competitivas recurren a fórmulas alternas de administración de su capital 
+                            humano, como el Outsourcing.
                             </p>
                         </div>
                     </div>
@@ -110,10 +111,10 @@
                             >
                                 <i class="fas fa-retweet"></i>
                             </div>
-                            <h6 class="text-xl font-semibold">Free Revisions</h6>
+                            <h6 class="text-xl font-semibold">Reclutamiento y selección</h6>
                             <p class="mt-2 mb-4 text-gray-600">
-                                Keep you user engaged by providing meaningful information.
-                                Remember that by this time, the user is curious.
+                            Delegue en nosotros la selección del mejor talento humano para su compañía 
+                            generando con ello economías de ahorro.
                             </p>
                         </div>
                     </div>
@@ -128,10 +129,10 @@
                             >
                                 <i class="fas fa-fingerprint"></i>
                             </div>
-                            <h6 class="text-xl font-semibold">Verified Company</h6>
+                            <h6 class="text-xl font-semibold">Capacitación y consultorías</h6>
                             <p class="mt-2 mb-4 text-gray-600">
-                                Write a few lines about each one. A paragraph describing a
-                                feature will be enough. Keep you user engaged!
+                            Entendemos la formación como un medio clave para ayudar a nuestros 
+                            clientes en la consecución de sus resultados.
                             </p>
                         </div>
                     </div>
@@ -145,21 +146,26 @@
                         <i class="text-xl fas fa-user-friends"></i>
                     </div>
                     <h3 class="mb-2 text-3xl font-semibold leading-normal">
-                        Working with us is a pleasure
+                        ¿Quiénes somos? :
                     </h3>
                     <p
                         class="mt-4 mb-4 text-lg font-light leading-relaxed text-gray-700"
                     >
-                        Don't let your uses guess by attaching tooltips and popoves to
-                        any element. Just make sure you enable them first via
-                        JavaScript.
+                    Grupo Vec es una de las principales firmas consultoras con mayor presencia, 
+                    en virtud de la innovación e implementación de tecnología en los procesos y 
+                    servicios de outsourcing y tercerización, la especialización en su 
+                    administración de riesgos fortalece a las diferentes empresas y corporaciones 
+                    en la calificación del talento, contando con poligrafistas certificados y 
+                    profesionales en el análisis de estudios e investigaciones socioeconómicas, 
+                    además su selecto grupo de psicólogos y profesionales en la gestión del talento humano hace de 
+                    Grupo Vec su aliado estratégico.
                     </p>
                     <p
                         class="mt-0 mb-4 text-lg font-light leading-relaxed text-gray-700"
                     >
-                        The kit comes with three pre-built pages to help you get started
+                        <!--The kit comes with three pre-built pages to help you get started
                         faster. You can change the text and images and you're good to
-                        go. Just make sure you enable them first via JavaScript.
+                        go. Just make sure you enable them first via JavaScript.-->
                     </p>
                     <a
                         href="https://www.creative-tim.com/learning-lab/tailwind-starter-kit#/presentation"
@@ -190,12 +196,12 @@
                                 ></polygon>
                             </svg>
                             <h4 class="text-xl font-bold text-white">
-                                Top Notch Services
+                                Brindando soluciones como aliado estratégico de su negocio.
                             </h4>
                             <p class="mt-2 font-light text-white text-md">
-                                The Arctic Ocean freezes every winter and much of the
-                                sea-ice then thaws every summer, and that process will
-                                continue whatever happens.
+                            Grupo Vec es una firma consultora especializada en Outsourcing ,
+                            tercerización, Administración de Riesgos, Desarrollo del Talento 
+                            Humano y logística, con experiencia en el mercado
                             </p>
                         </blockquote>
                     </div>
@@ -528,7 +534,7 @@
                         class="relative flex flex-col w-full min-w-0 mb-6 break-words bg-gray-300 rounded-lg shadow-lg"
                     >
                         <div class="flex-auto p-5 lg:p-10">
-                            <h4 class="text-2xl font-semibold">Cuentanos tus dudas</h4>
+                            <h4 class="text-2xl font-semibold">Eres empresa y nos quiere contactar</h4>
                             <p class="mt-1 mb-4 leading-relaxed text-gray-600">
                                 Complete este formulario y nos pondremos en contacto con usted en 24 horas.
                             </p>
@@ -766,7 +772,7 @@
         >
             <div class="w-full px-4 mx-auto text-center md:w-4/12">
                 <div class="py-1 text-sm font-semibold text-gray-600">
-                    Copyright © 2019 Tailwind Starter Kit by
+                    Copyright © 2022 Grupo Vec
                     <a
                         href="https://www.creative-tim.com"
                         class="text-gray-600 hover:text-gray-900"
